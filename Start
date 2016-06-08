@@ -1,0 +1,6 @@
+cd Developer
+cd DiscordBot
+cd LarypieBotDiscordJsProject
+echo "Name of program: "
+read appName
+node $appName
