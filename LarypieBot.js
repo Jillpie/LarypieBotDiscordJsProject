@@ -1,64 +1,168 @@
-
+// Program Details for
+var programDetails = [
+"Larypie Bot",
+"Version 4.1.0",
+"Discord Js"
+];
+console.log("--------------------");
+for (var i = 0; i < programDetails.length; i++) {
+  console.log(programDetails[i]);
+};
+console.log("--------------------");
+//vars
+  //Msg
+    //Terminate
+      var commandTerminate = 0;
+      var checkTerminate = 0;
+    //discord
+      // Load discord.js
       var Discord = require("discord.js");
-      var projectName = "Larypie Bot"
-      var projectVersion = 1;
-      var projectDisplay = projectName + "v" + projectVersion;
-      var channelIdList = [
-      "The Balloons",
-      "175009966241873920",
-      "Bot Testing Realm",
-      "189631708721577984",
-      "SCHS Robotics",
-      "177211185177821184"
-      ];
+      // Create a client
+      var larypieBot = new Discord.Client();
+    //Songs
       var song = [
-      "Lux",
-      "+play https://www.youtube.com/watch?v=VTaOzFVZIIY",
-      "Temmo",
-      "+play https://www.youtube.com/watch?v=KDIAGsCOWD8",
-      "Braum",
-      "+play https://www.youtube.com/watch?v=zYd8D804bT0"
+       "Lux",
+       "+play https://www.youtube.com/watch?v=VTaOzFVZIIY",
+        "Temmo",
+        "+play https://www.youtube.com/watch?v=KDIAGsCOWD8",
+       "Braum",
+       "+play https://www.youtube.com/watch?v=zYd8D804bT0",
+       "Windmill",
+       "+play https://www.youtube.com/watch?v=41kF2-JvwPs",
+       "Undertale",
+       "+play https://www.youtube.com/watch?v=ZcoqR9Bwx1Y"
       ];
       var songSelect = 1;
-      var channelSelect = 5;
-      var myFun = 0;
-      var songToggLoop = true;
-      var larypieBotClient = new Discord.Client();
+      var songToggLoop = false;
+      var youToggLoop = false;
+      var youPlay = "hi";
+// This code will run once the bot has started up.
+larypieBot.on("ready", function () {
+  console.log("Ready to begin! Serving in " + larypieBot.channels.length + " channels");
+});
+// This code will run once the bot has disconnected from Discord.
+larypieBot.on("disconnected", function () {
+  // alert the console
+  console.log("Disconnected!");
+  // exit node.js with an error
+  process.exit(1);
+});
+// This code will run once the bot receives any message.
+larypieBot.on("message", function (msg) {
+  larypieBot.joinVoiceChannel(msg.author.voiceChannel);
+  // if message begins with "ping"
+  if(msg.content.indexOf("Stahp") === 0) {
+    // send a message to the channel the ping message was sent in.
+    larypieBot.sendMessage(msg.channel, msg.tts);
+    larypieBot.sendMessage(msg.channel, msg.embeds);
+    larypieBot.sendMessage(msg.channel, msg.client);
+    larypieBot.sendMessage(msg.channel, msg.id);
+    larypieBot.sendMessage(msg.channel, "not" + msg.content + " Bot");
+    larypieBot.sendMessage(msg.channel, msg.author);
+    larypieBot.sendMessage(msg.channel, msg.mentions);
+    // alert the console
+    console.log("pong-ed " + msg.author.username);
+  }
+  //New Messageing
+    //for (var i = Things.length - 1; i >= 0; i--) {
+    //  Things[i]
+    //};
+  if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
+    larypieBot.sendMessage(msg.channel, "No u.  ");
+  }
+  if(msg.content.toLowerCase().includes(">channelid")){
+    larypieBot.sendMessage(msg.channel, msg.channel);
+  }
+  if(msg.content.toLowerCase().includes("who")){
+    larypieBot.sendMessage(msg.channel, "ME!!!!!!!!!!!!!!!!!!!!!");
+  }
+  larypieBot.startTyping(msg.channel);
+  larypieBot.stopTyping(msg.channel);
+  if(msg.content.indexOf(">array") === 0){
+    larypieBot.sendMessage(msg.channel, programDetails);
+  }
+  if(msg.content.indexOf(">Hello") === 0) {
+    // send a message to the channel the ping message was sent in.
+    larypieBot.sendMessage(msg.channel, "Hi!");
+    // alert the console
+    console.log("Hi!-ed " + msg.author.username);
+  }
+      if(msg.content.toLowerCase().includes(">Help")){
+      this.sendMessage(msg.channel, "Hi");
+    }
+  //Terminate
+    if(msg.content.indexOf(">terminate") === 0){
+      larypieBot.sendMessage(msg.channel, "I see that " + msg.author + " doesn't want me here anymore.");
+      commandTerminate = 1;
+    }
+    if(commandTerminate > 0){
+      checkTerminate++
+      if(checkTerminate == 2){
+        larypieBot.sendMessage(msg.channel, "terminal velocity.");
+        larypieBot.voiceConnection.destroy();
+        process.exit(1);
+      }
+    }
+  //Best Hexa
+    if(msg.content.indexOf("Music finished! Disconnecting from voice channel!") != -1 && songToggLoop == true){
+      larypieBot.sendMessage(msg.channel, song[songSelect]);
+    }
+    if(msg.content.indexOf("ping") != -1){
+      console.log("pong-ed " + msg.author.username);
+    }
+    if(msg.content.indexOf(song[songSelect]) != -1){
+      larypieBot.sendMessage(msg.channel, programDetails[0] + " " + programDetails[1]);
+    }
+    if(msg.content.indexOf(">Play Song") != -1){
+      larypieBot.sendMessage(msg.channel, "msg.channel: " + msg.channel);
+      larypieBot.sendMessage(msg.channel, "msg.author.voiceChannel: " + msg.author.voiceChannel);
+      larypieBot.sendMessage(msg.channel, song[songSelect]);
+    }
+    if(msg.content.indexOf(">Change Song") != -1){
+      songSelect++;
+      songSelect++;
+      larypieBot.sendMessage(msg.channel, song[songSelect - 1]);
+    }
+    if(msg.content.indexOf(">RChange") != -1){
+      songSelect = 1;
+      larypieBot.sendMessage(msg.channel, song[songSelect - 1]);
+    }
+    if(msg.content.indexOf(">Stop Song") != -1){
+      larypieBot.sendMessage(msg.channel, "+stop");
+    }
+    if(msg.content.indexOf(">Play Music") != -1){
+      larypieBot.internal.voiceConnection.playRawStream("https://www.youtube.com/watch?v=ZcoqR9Bwx1Y");
+    }
+    if(msg.content.indexOf(">Fun") != -1){
+      larypieBot.sendMessage(msg.channel, "Song Select: " + songSelect);
+      larypieBot.sendMessage(msg.channel, "Song.Length: " + song.length);
+    }
+    if(msg.content.indexOf(">Next Song?") != -1){
+      this.sendMessage(msg.channel, song[songSelect - 1]);
+    }
+    if(msg.content.indexOf(">Togg Loop") != -1){
+      songToggLoop = !songToggLoop;
+      this.sendMessage(msg.channel, songToggLoop);
+    }
+    if(msg.content.indexOf(">Stop Song") != -1){
+      this.sendMessage(msg.channel, "+stop");
+    }
+  //Youtube Play All
+    if(msg.content.indexOf("https://www.youtube.com") === 0){
+      larypieBot.joinVoiceChannel(msg.author.voiceChannel);
+      larypieBot.sendMessage(msg.channel, "+play " + msg.content);
+      youPlay = msg.content;
+    }
+    if(youToggLoop == true && msg.content.indexOf("Music finished! Disconnecting from voice channel!") === 0){
+      larypieBot.joinVoiceChannel(msg.author.voiceChannel);
+      larypieBot.sendMessage(msg.channel, "+play " + youPlay);
+    }
+    if(msg.content.indexOf(">Togg You") != -1){
+      youToggLoop = !youToggLoop;
+      this.sendMessage(msg.channel, youToggLoop);
+    }
+});
 
-      function startPingPong(){
-        larypieBotClient.on("message", function(msg){
-          if(msg.content.indexOf("Music finished! Disconnecting from voice channel!") != -1 && songToggLoop == true){
-            this.sendMessage(channelIdList[channelSelect], song[songSelect]);
-          }
-          if(msg.content.indexOf("ping") != -1){
-            this.sendMessage("ping", projectDisplay);
-            console.log("pong-ed " + msg.author.username);
-          }
-          if(msg.content.indexOf(song[songSelect]) != -1){
-            this.sendMessage(channelIdList[channelSelect], projectDisplay);
-          }
-          if(msg.content.indexOf(">Play Song") != -1){
-            this.sendMessage(channelIdList[channelSelect], song[songSelect]);
-          }
-          if(msg.content.indexOf(">Change Song") != -1){
-            songSelect++;
-            songSelect++;
-            this.sendMessage(channelIdList[channelSelect], song[songSelect - 1]);
-          }
-          if(msg.content.indexOf(">Fun") != -1){
-            myFun++;
-            this.sendMessage(channelIdList[channelSelect], "Song Select: " + songSelect);
-            this.sendMessage(channelIdList[channelSelect], "Song.Length: " + song.length);
-            this.sendMessage(channelIdList[channelSelect], "myFun: " + myFun);
-          }
-          if(msg.content.indexOf(">Next Song?") != -1){
-            this.sendMessage(channelIdList[channelSelect], song[songSelect - 1]);
-          }
-          if(msg.content.indexOf(">Togg Loop") != -1){
-            songToggLoop = !songToggLoop;
-            this.sendMessage(channelIdList[channelSelect], songToggLoop);
-          }
-        });
-        larypieBotClient.loginWithToken("MTg5OTI3NDMxNDMwMzQwNjA4.CjkUWg.9kAzFEGq-ZtGCDkYvyoY5Fhle2s");
-      };
-    
+// Login (replace these auth details with your bot's)
+larypieBot.loginWithToken("MTg5OTI3NDMxNDMwMzQwNjA4.CjkUWg.9kAzFEGq-ZtGCDkYvyoY5Fhle2s");
+console.log("Program: " + programDetails[0] + programDetails[1] + " JS file complete.");

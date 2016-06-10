@@ -9,6 +9,9 @@ for (var i = 0; i < programDetails.length; i++) {
   console.log(programDetails[i]);
 };
 console.log("--------------------");
+
+var commandTerminate = 0;
+var checkTerminate = 0;
 // Load discord.js
 var Discord = require("discord.js");
 // Create a client
@@ -16,7 +19,6 @@ var larypieBot = new Discord.Client();
 // This code will run once the bot has started up.
 larypieBot.on("ready", function () {
   console.log("Ready to begin! Serving in " + larypieBot.channels.length + " channels");
-  larypieBot.sendMessage("#schsrobotics", "Larypie Bot Ready.");
 });
 // This code will run once the bot has disconnected from Discord.
 larypieBot.on("disconnected", function () {
@@ -40,7 +42,7 @@ larypieBot.on("message", function (msg) {
     // alert the console
     console.log("pong-ed " + msg.author.username);
   }
-  if(msg.content.toLowerCase().includes("you")){
+  if(msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")){
     larypieBot.sendMessage(msg.channel, "No u.  ");
   }
   if(msg.content.toLowerCase().includes(">channelid")){
@@ -59,6 +61,21 @@ larypieBot.on("message", function (msg) {
     larypieBot.sendMessage(msg.channel, "Hi!");
     // alert the console
     console.log("Hi!-ed " + msg.author.username);
+  }
+  if(msg.content.indexOf(">terminate") === 0){
+    larypieBot.sendMessage(msg.channel, "I see that " + msg.author + " doesn't want me here anymore.");
+    commandTerminate = 1;
+  }
+  if(commandTerminate > 0){
+    checkTerminate++
+    if(checkTerminate == 2){
+      larypieBot.sendMessage(msg.channel, "terminal velocity.");
+    }
+    if(checkTerminate > 3){
+      process.exit(1);
+    }else{
+      larypieBot.sendMessage(msg.channel, "check terminate: " + checkTerminate);
+    }
   }
 });
 
