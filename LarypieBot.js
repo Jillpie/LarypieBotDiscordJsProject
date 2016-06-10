@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 5.0.0",
+"Version 5.2.0",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -51,8 +51,8 @@ console.log("--------------------");
           "No u.",
 
           ">channelid",
-          "Command"
-
+          "Command",
+          " "
 
       ];
       //Messaging Array Referance
@@ -157,7 +157,7 @@ larypieBot.on("message", function (msg) {
       this.sendMessage(msg.channel, "+stop");
     }
   //Youtube Play All
-    if(msg.content.indexOf("https://www.youtube.com") === 0){
+    if(msg.content.includes("https://www.youtube.com") && msg.author != larypieBot.user){
       larypieBot.joinVoiceChannel(msg.author.voiceChannel);
       larypieBot.sendMessage(msg.channel, "+play " + msg.content);
       youPlay = msg.content;
