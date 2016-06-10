@@ -1,0 +1,14 @@
+
+echo "Name of Beans: "
+read nameOfBeans
+
+
+if [ "$nameOfBeans" = "amazing" ]
+then
+    echo "There's Beans"
+    exit 0
+elif [ "$nameOfBeans" = "cool" ]
+then
+    echo "no. Beans"
+    exit 1
+fi
