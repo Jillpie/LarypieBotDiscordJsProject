@@ -42,6 +42,10 @@ console.log("--------------------");
          "TYPE:Command,Natural;ASUMES:interperts all as lowercases",
          "RESPONCE:Message",
         //Messageing Basic
+          "ping",
+          "Natural",
+          "Pong",
+
           "you",
           "Natural",
           "No u.",
@@ -50,10 +54,33 @@ console.log("--------------------");
           "Natural",
           "No u.",
 
-          ">channelid",
-          "Command",
-          " "
+          "him",
+          "Natural",
+          "'him'... Why not her...",
 
+          "will",
+          "Natural",
+          "And I will make America great",
+
+          "channelid",
+          "Command",
+          "HA NOT DEVELOPED YET!",
+
+          "who",
+          "Natural",
+          "ME!!!!!!!!!!!!!!!!!!!!",
+
+          "hello",
+          "Natural",
+          "HIIIIIIIII!",
+
+          " help ",
+          "Natural",
+          "Not anyone can help you. [consider >help]",
+
+          "help",
+          "Command",
+          "LOL STILL NOT DEVELOPED!"
       ];
       //Messaging Array Referance
 
