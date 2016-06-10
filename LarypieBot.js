@@ -96,32 +96,6 @@ larypieBot.on("message", function (msg) {
           i = -1;
         }
       };
-  //Messageing
-  /*
-    if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
-      larypieBot.sendMessage(msg.channel, "No u.  ");
-    }
-    if(msg.content.toLowerCase().includes(">channelid")){
-      larypieBot.sendMessage(msg.channel, msg.channel);
-    }
-    if(msg.content.toLowerCase().includes("who")){
-      larypieBot.sendMessage(msg.channel, "ME!!!!!!!!!!!!!!!!!!!!!");
-    }
-    larypieBot.startTyping(msg.channel);
-    larypieBot.stopTyping(msg.channel);
-    if(msg.content.indexOf(">array") === 0){
-      larypieBot.sendMessage(msg.channel, programDetails);
-    }
-    if(msg.content.indexOf(">Hello") === 0) {
-      // send a message to the channel the ping message was sent in.
-      larypieBot.sendMessage(msg.channel, "Hi!");
-      // alert the console
-      console.log("Hi!-ed " + msg.author.username);
-    }
-    if(msg.content.toLowerCase().includes(">Help")){
-      this.sendMessage(msg.channel, "Hi");
-    } 
-    */
   //Terminate
     if(msg.content.indexOf(">terminate") === 0){
       larypieBot.sendMessage(msg.channel, "I see that " + msg.author + " doesn't want me here anymore.");
