@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 5.2.0",
+"Version 5.4.0",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -186,7 +186,7 @@ larypieBot.on("message", function (msg) {
   //Youtube Play All
     if(msg.content.includes("https://www.youtube.com") && msg.author != larypieBot.user){
       larypieBot.joinVoiceChannel(msg.author.voiceChannel);
-      larypieBot.sendMessage(msg.channel, "+play " + msg.content);
+      larypieBot.sendMessage(msg.channel, "+play " + msg.content.substring(msg.content.indexOf("https://www.youtube.com")) );
       youPlay = msg.content;
     }
     if(youToggLoop == true && msg.content.indexOf("Music finished! Disconnecting from voice channel!") === 0){
