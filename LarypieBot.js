@@ -51,8 +51,9 @@ console.log("--------------------");
           "No u.",
 
           ">channelid",
-          "Command",
-          msg.channel
+          "Command"
+
+
       ];
       //Messaging Array Referance
 
@@ -71,9 +72,9 @@ larypieBot.on("disconnected", function () {
 larypieBot.on("message", function (msg) {
   larypieBot.joinVoiceChannel(msg.author.voiceChannel);
   //Messageing Array
-    for (var i = Things.length - 1; i >= 0; i--) {
-      Things[i]
-    };
+   // for (var i = Things.length - 1; i >= 0; i--) {
+   //   Things[i]
+   // };
   //Messageing
     if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
       larypieBot.sendMessage(msg.channel, "No u.  ");
