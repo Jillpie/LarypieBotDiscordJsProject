@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 4.2.1",
+"Version 5.0.0",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -35,7 +35,7 @@ console.log("--------------------");
       songSelect = 1,
       songToggLoop = false,
       youToggLoop = false,
-      youPlay = "hi";
+      youPlay = "https://www.youtube.com/watch?v=ADmSA0eE8SU";
 // This code will run once the bot has started up.
 larypieBot.on("ready", function () {
   console.log("Ready to begin! Serving in " + larypieBot.channels.length + " channels");
@@ -161,6 +161,20 @@ larypieBot.on("message", function (msg) {
       youToggLoop = !youToggLoop;
       this.sendMessage(msg.channel, youToggLoop);
     }
+    if(msg.content.indexOf(">Play Last") != -1){
+      this.sendMessage(msg.channel, "+play " + youPlay);
+    }
+    if(msg.content.indexOf(">del") === 0 ){
+      larypieBot.deleteMessage(msg.id);
+      larypieBot.deleteMessage(msg.content);
+      larypieBot.deleteMessage(msg.server);
+      larypieBot.deleteMessage(msg.channel);
+      larypieBot.sendMessage(msg.channel,"completed!");
+      larypieBot.getChannelLogs(msg.channel);
+      larypieBot.sendMessage(msg.channel,larypieBot.getChannelLogs(msg.channel));
+
+    }
+
 });
 
 // Login (replace these auth details with your bot's)
