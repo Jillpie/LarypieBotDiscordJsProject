@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 5.4.0",
+"Version 5.4.1",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -37,51 +37,41 @@ console.log("--------------------");
       youToggLoop = false,
       youPlay = "https://www.youtube.com/watch?v=ADmSA0eE8SU";
     //Messaging Array
-      var messArray = [
+      var messArrayNat = [
         "SAMPLE:Message",
-         "TYPE:Command,Natural;ASUMES:interperts all as lowercases",
          "RESPONCE:Message",
         //Messageing Basic
           "ping",
-          "Natural",
           "Pong",
 
           "you",
-          "Natural",
           "No u.",
 
           " u ",
-          "Natural",
           "No u.",
 
           "him",
-          "Natural",
           "'him'... Why not her...",
 
           "will",
-          "Natural",
           "And I will make America great",
 
-          "channelid",
-          "Command",
-          "HA NOT DEVELOPED YET!",
-
           "who",
-          "Natural",
           "ME!!!!!!!!!!!!!!!!!!!!",
 
           "hello",
-          "Natural",
           "HIIIIIIIII!",
 
           " help ",
-          "Natural",
           "Not anyone can help you. [consider >help]",
-
+        ],
+        messArrayComm = [
           "help",
-          "Command",
-          "LOL STILL NOT DEVELOPED!"
-      ];
+          "LOL STILL NOT DEVELOPED!",
+
+          "channelid",
+          "HA NOT DEVELOPED YET!"
+        ];
       //Messaging Array Referance
 
 // This code will run once the bot has started up.
