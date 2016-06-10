@@ -36,6 +36,26 @@ console.log("--------------------");
       songToggLoop = false,
       youToggLoop = false,
       youPlay = "https://www.youtube.com/watch?v=ADmSA0eE8SU";
+    //Messaging Array
+      var messArray = [
+        "SAMPLE:Message",
+         "TYPE:Command,Natural;ASUMES:interperts all as lowercases",
+         "RESPONCE:Message",
+        //Messageing Basic
+          "you",
+          "Natural",
+          "No u.",
+
+          " u ",
+          "Natural",
+          "No u.",
+
+          ">channelid",
+          "Command",
+          msg.channel
+      ];
+      //Messaging Array Referance
+
 // This code will run once the bot has started up.
 larypieBot.on("ready", function () {
   console.log("Ready to begin! Serving in " + larypieBot.channels.length + " channels");
@@ -50,44 +70,32 @@ larypieBot.on("disconnected", function () {
 // This code will run once the bot receives any message.
 larypieBot.on("message", function (msg) {
   larypieBot.joinVoiceChannel(msg.author.voiceChannel);
-  // if message begins with "ping"
-  if(msg.content.indexOf("Stahp") === 0) {
-    // send a message to the channel the ping message was sent in.
-    larypieBot.sendMessage(msg.channel, msg.tts);
-    larypieBot.sendMessage(msg.channel, msg.embeds);
-    larypieBot.sendMessage(msg.channel, msg.client);
-    larypieBot.sendMessage(msg.channel, msg.id);
-    larypieBot.sendMessage(msg.channel, "not" + msg.content + " Bot");
-    larypieBot.sendMessage(msg.channel, msg.author);
-    larypieBot.sendMessage(msg.channel, msg.mentions);
-    // alert the console
-    console.log("pong-ed " + msg.author.username);
-  }
-  //New Messageing
-    //for (var i = Things.length - 1; i >= 0; i--) {
-    //  Things[i]
-    //};
-  if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
-    larypieBot.sendMessage(msg.channel, "No u.  ");
-  }
-  if(msg.content.toLowerCase().includes(">channelid")){
-    larypieBot.sendMessage(msg.channel, msg.channel);
-  }
-  if(msg.content.toLowerCase().includes("who")){
-    larypieBot.sendMessage(msg.channel, "ME!!!!!!!!!!!!!!!!!!!!!");
-  }
-  larypieBot.startTyping(msg.channel);
-  larypieBot.stopTyping(msg.channel);
-  if(msg.content.indexOf(">array") === 0){
-    larypieBot.sendMessage(msg.channel, programDetails);
-  }
-  if(msg.content.indexOf(">Hello") === 0) {
-    // send a message to the channel the ping message was sent in.
-    larypieBot.sendMessage(msg.channel, "Hi!");
-    // alert the console
-    console.log("Hi!-ed " + msg.author.username);
-  }
-      if(msg.content.toLowerCase().includes(">Help")){
+  //Messageing Array
+    for (var i = Things.length - 1; i >= 0; i--) {
+      Things[i]
+    };
+  //Messageing
+    if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
+      larypieBot.sendMessage(msg.channel, "No u.  ");
+    }
+    if(msg.content.toLowerCase().includes(">channelid")){
+      larypieBot.sendMessage(msg.channel, msg.channel);
+    }
+    if(msg.content.toLowerCase().includes("who")){
+      larypieBot.sendMessage(msg.channel, "ME!!!!!!!!!!!!!!!!!!!!!");
+    }
+    larypieBot.startTyping(msg.channel);
+    larypieBot.stopTyping(msg.channel);
+    if(msg.content.indexOf(">array") === 0){
+      larypieBot.sendMessage(msg.channel, programDetails);
+    }
+    if(msg.content.indexOf(">Hello") === 0) {
+      // send a message to the channel the ping message was sent in.
+      larypieBot.sendMessage(msg.channel, "Hi!");
+      // alert the console
+      console.log("Hi!-ed " + msg.author.username);
+    }
+    if(msg.content.toLowerCase().includes(">Help")){
       this.sendMessage(msg.channel, "Hi");
     }
   //Terminate
