@@ -89,9 +89,12 @@ larypieBot.on("disconnected", function () {
 larypieBot.on("message", function (msg) {
   larypieBot.joinVoiceChannel(msg.author.voiceChannel);
   //Messageing Array
-   // for (var i = Things.length - 1; i >= 0; i--) {
-   //   Things[i]
-   // };
+    //Natrual
+      for (var i = 2; messArrayNat.length > i; i+=2) {
+        if(msg.content.toLowerCase().includes(messArrayNat[i])){
+          larypieBot.sendMessage(msg.channel,messArrayNat[i+1]);
+        }
+      };
   //Messageing
     if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
       larypieBot.sendMessage(msg.channel, "No u.  ");
