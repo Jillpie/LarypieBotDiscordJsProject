@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 4.1.0",
+"Version 4.2.1",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -12,8 +12,8 @@ console.log("--------------------");
 //vars
   //Msg
     //Terminate
-      var commandTerminate = 0;
-      var checkTerminate = 0;
+      var commandTerminate = 0,
+      checkTerminate = 0;
     //discord
       // Load discord.js
       var Discord = require("discord.js");
@@ -31,11 +31,11 @@ console.log("--------------------");
        "+play https://www.youtube.com/watch?v=41kF2-JvwPs",
        "Undertale",
        "+play https://www.youtube.com/watch?v=ZcoqR9Bwx1Y"
-      ];
-      var songSelect = 1;
-      var songToggLoop = false;
-      var youToggLoop = false;
-      var youPlay = "hi";
+      ],
+      songSelect = 1,
+      songToggLoop = false,
+      youToggLoop = false,
+      youPlay = "hi";
 // This code will run once the bot has started up.
 larypieBot.on("ready", function () {
   console.log("Ready to begin! Serving in " + larypieBot.channels.length + " channels");
@@ -131,7 +131,7 @@ larypieBot.on("message", function (msg) {
       larypieBot.sendMessage(msg.channel, "+stop");
     }
     if(msg.content.indexOf(">Play Music") != -1){
-      larypieBot.internal.voiceConnection.playRawStream("https://www.youtube.com/watch?v=ZcoqR9Bwx1Y");
+    //  larypieBot.voiceConnection.playFile("https://www.youtube.com/watch?v=ZcoqR9Bwx1Y");
     }
     if(msg.content.indexOf(">Fun") != -1){
       larypieBot.sendMessage(msg.channel, "Song Select: " + songSelect);
