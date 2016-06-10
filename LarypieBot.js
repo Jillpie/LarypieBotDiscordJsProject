@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 4.2.1",
+"Version 5.6.1",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -35,7 +35,45 @@ console.log("--------------------");
       songSelect = 1,
       songToggLoop = false,
       youToggLoop = false,
-      youPlay = "hi";
+      youPlay = "https://www.youtube.com/watch?v=ADmSA0eE8SU";
+    //Messaging Array
+      var messArrayNat = [
+        "SAMPLE:Message",
+         "RESPONCE:Message",
+        //Messageing Basic
+          "ping",
+          "Pong",
+
+          "you",
+          "No u.",
+
+          " u ",
+          "No u.",
+
+          "him",
+          "'him'... Why not her...",
+
+          "will",
+          "And I will make America great",
+
+          "who",
+          "ME!!!!!!!!!!!!!!!!!!!!",
+
+          "hello",
+          "HIIIIIIIII!",
+
+          " help ",
+          "Not anyone can help you. [consider >help]",
+        ],
+        messArrayComm = [
+          "help",
+          "LOL STILL NOT DEVELOPED!",
+
+          "channelid",
+          "HA NOT DEVELOPED YET!"
+        ];
+      //Messaging Array Referance
+
 // This code will run once the bot has started up.
 larypieBot.on("ready", function () {
   console.log("Ready to begin! Serving in " + larypieBot.channels.length + " channels");
@@ -50,46 +88,40 @@ larypieBot.on("disconnected", function () {
 // This code will run once the bot receives any message.
 larypieBot.on("message", function (msg) {
   larypieBot.joinVoiceChannel(msg.author.voiceChannel);
-  // if message begins with "ping"
-  if(msg.content.indexOf("Stahp") === 0) {
-    // send a message to the channel the ping message was sent in.
-    larypieBot.sendMessage(msg.channel, msg.tts);
-    larypieBot.sendMessage(msg.channel, msg.embeds);
-    larypieBot.sendMessage(msg.channel, msg.client);
-    larypieBot.sendMessage(msg.channel, msg.id);
-    larypieBot.sendMessage(msg.channel, "not" + msg.content + " Bot");
-    larypieBot.sendMessage(msg.channel, msg.author);
-    larypieBot.sendMessage(msg.channel, msg.mentions);
-    // alert the console
-    console.log("pong-ed " + msg.author.username);
-  }
-  //New Messageing
-    //for (var i = Things.length - 1; i >= 0; i--) {
-    //  Things[i]
-    //};
-  if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
-    larypieBot.sendMessage(msg.channel, "No u.  ");
-  }
-  if(msg.content.toLowerCase().includes(">channelid")){
-    larypieBot.sendMessage(msg.channel, msg.channel);
-  }
-  if(msg.content.toLowerCase().includes("who")){
-    larypieBot.sendMessage(msg.channel, "ME!!!!!!!!!!!!!!!!!!!!!");
-  }
-  larypieBot.startTyping(msg.channel);
-  larypieBot.stopTyping(msg.channel);
-  if(msg.content.indexOf(">array") === 0){
-    larypieBot.sendMessage(msg.channel, programDetails);
-  }
-  if(msg.content.indexOf(">Hello") === 0) {
-    // send a message to the channel the ping message was sent in.
-    larypieBot.sendMessage(msg.channel, "Hi!");
-    // alert the console
-    console.log("Hi!-ed " + msg.author.username);
-  }
-      if(msg.content.toLowerCase().includes(">Help")){
-      this.sendMessage(msg.channel, "Hi");
+  //Messageing Array
+    //Natrual
+      for (var i = 2; messArrayNat.length > i && i > 0; i+=2) {
+        if(msg.content.toLowerCase().includes(messArrayNat[i]) && msg.author != larypieBot.user){
+          larypieBot.sendMessage(msg.channel,messArrayNat[i+1]);
+          i = -1;
+        }
+      };
+  //Messageing
+  /*
+    if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
+      larypieBot.sendMessage(msg.channel, "No u.  ");
     }
+    if(msg.content.toLowerCase().includes(">channelid")){
+      larypieBot.sendMessage(msg.channel, msg.channel);
+    }
+    if(msg.content.toLowerCase().includes("who")){
+      larypieBot.sendMessage(msg.channel, "ME!!!!!!!!!!!!!!!!!!!!!");
+    }
+    larypieBot.startTyping(msg.channel);
+    larypieBot.stopTyping(msg.channel);
+    if(msg.content.indexOf(">array") === 0){
+      larypieBot.sendMessage(msg.channel, programDetails);
+    }
+    if(msg.content.indexOf(">Hello") === 0) {
+      // send a message to the channel the ping message was sent in.
+      larypieBot.sendMessage(msg.channel, "Hi!");
+      // alert the console
+      console.log("Hi!-ed " + msg.author.username);
+    }
+    if(msg.content.toLowerCase().includes(">Help")){
+      this.sendMessage(msg.channel, "Hi");
+    } 
+    */
   //Terminate
     if(msg.content.indexOf(">terminate") === 0){
       larypieBot.sendMessage(msg.channel, "I see that " + msg.author + " doesn't want me here anymore.");
@@ -148,9 +180,9 @@ larypieBot.on("message", function (msg) {
       this.sendMessage(msg.channel, "+stop");
     }
   //Youtube Play All
-    if(msg.content.indexOf("https://www.youtube.com") === 0){
+    if(msg.content.includes("https://www.youtube.com") && msg.author != larypieBot.user){
       larypieBot.joinVoiceChannel(msg.author.voiceChannel);
-      larypieBot.sendMessage(msg.channel, "+play " + msg.content);
+      larypieBot.sendMessage(msg.channel, "+play " + msg.content.substring(msg.content.indexOf("https://www.youtube.com")) );
       youPlay = msg.content;
     }
     if(youToggLoop == true && msg.content.indexOf("Music finished! Disconnecting from voice channel!") === 0){
@@ -161,6 +193,20 @@ larypieBot.on("message", function (msg) {
       youToggLoop = !youToggLoop;
       this.sendMessage(msg.channel, youToggLoop);
     }
+    if(msg.content.indexOf(">Play Last") != -1){
+      this.sendMessage(msg.channel, "+play " + youPlay);
+    }
+    if(msg.content.indexOf(">del") === 0 ){
+      larypieBot.deleteMessage(msg.id);
+      larypieBot.deleteMessage(msg.content);
+      larypieBot.deleteMessage(msg.server);
+      larypieBot.deleteMessage(msg.channel);
+      larypieBot.sendMessage(msg.channel,"completed!");
+      larypieBot.getChannelLogs(msg.channel);
+      larypieBot.sendMessage(msg.channel,larypieBot.getChannelLogs(msg.channel));
+
+    }
+
 });
 
 // Login (replace these auth details with your bot's)
