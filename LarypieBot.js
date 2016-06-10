@@ -1,7 +1,7 @@
 // Program Details for
 var programDetails = [
 "Larypie Bot",
-"Version 5.4.1",
+"Version 5.6.1",
 "Discord Js"
 ];
 console.log("--------------------");
@@ -90,12 +90,14 @@ larypieBot.on("message", function (msg) {
   larypieBot.joinVoiceChannel(msg.author.voiceChannel);
   //Messageing Array
     //Natrual
-      for (var i = 2; messArrayNat.length > i; i+=2) {
-        if(msg.content.toLowerCase().includes(messArrayNat[i])){
+      for (var i = 2; messArrayNat.length > i && i > 0; i+=2) {
+        if(msg.content.toLowerCase().includes(messArrayNat[i]) && msg.author != larypieBot.user){
           larypieBot.sendMessage(msg.channel,messArrayNat[i+1]);
+          i = -1;
         }
       };
   //Messageing
+  /*
     if((msg.content.toLowerCase().includes("you") || msg.content.toLowerCase().includes(" u ")) && !msg.content.toLowerCase().includes("youtube")){
       larypieBot.sendMessage(msg.channel, "No u.  ");
     }
@@ -118,7 +120,8 @@ larypieBot.on("message", function (msg) {
     }
     if(msg.content.toLowerCase().includes(">Help")){
       this.sendMessage(msg.channel, "Hi");
-    }
+    } 
+    */
   //Terminate
     if(msg.content.indexOf(">terminate") === 0){
       larypieBot.sendMessage(msg.channel, "I see that " + msg.author + " doesn't want me here anymore.");
