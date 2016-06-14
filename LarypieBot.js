@@ -1,15 +1,14 @@
 // Program Details for program
 	var programDetails = {
 		nameOfProgram: "Larypie Bot",
-		version: "6.8.5",
+		version: "6.8.6",
 		platform: "Discord Js"
 	};
-//Display the Prgram details
+//Display the Prgram details (better way to condense this?)
 	console.log("--------------------");
-	//Cycles though the indexes of the array for Program Detail
-		console.log(programDetails.nameOfProgram);
-		console.log(programDetails.version);
-		console.log(programDetails.platform);
+	console.log(programDetails.nameOfProgram);
+	console.log(programDetails.version);
+	console.log(programDetails.platform);
 	console.log("--------------------");
 //Varibles
 	//Messages
@@ -130,6 +129,20 @@
 			"triggertimmerval",
 			triggerTimmer
 		];
+		function commandStruct(commname, help, call, commaction){
+			this.commname = commname;
+			this.help = help;
+			this.call = call;
+			this.commaction = commaction;
+		};
+		var commPlay = new commandStruct(
+			"commPlay",
+			"This plays music",
+			"play",
+			function(){
+				larypieBot.sendMessage(msg.channel,"I TIRED TO PLAY MSUIC");
+			}
+		);
 		//Messageing Array Action
 			//Natrual
 				//Loops Array Messaging System starts after Example messages in Array
