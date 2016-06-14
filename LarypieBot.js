@@ -1,7 +1,7 @@
 // Program Details for program
 	var programDetails = {
 		nameOfProgram: "Larypie Bot",
-		version: "6.8.6",
+		version: "6.9.0",
 		platform: "Discord Js"
 	};
 //Display the Prgram details (better way to condense this?)
@@ -129,20 +129,42 @@
 			"triggertimmerval",
 			triggerTimmer
 		];
-		function commandStruct(commname, help, call, commaction){
+		function commandStruct(commname, help, call, condition, commaction){
 			this.commname = commname;
 			this.help = help;
 			this.call = call;
+			this.condition = condition;
 			this.commaction = commaction;
 		};
-		var commPlay = new commandStruct(
-			"commPlay",
+		//Commands
+		var commandPlay = new commandStruct(
+			"commandPlay",
 			"This plays music",
 			"play",
+			true,
 			function(){
 				larypieBot.sendMessage(msg.channel,"I TIRED TO PLAY MSUIC");
 			}
-		);
+		),
+		commandFun = new commandStruct(
+			"commandFun",
+			"Funnnnnnnnnn!",
+			"fun",
+			true,
+			function(){
+				larypieBot.sendMessage(msg.channel,"FUN!");
+			}
+		),
+		commandPile = [
+			commandPlay,
+			commandFun
+		];
+		//Commands Object Proto?
+			for(var i = 0; commandPile.length > i && i > 0; i++){
+				if(msg.content.toLowerCase().indexOf(">" + commandPile[i].call) === 0 ){
+					commandPile[i+1];
+				}
+			}
 		//Messageing Array Action
 			//Natrual
 				//Loops Array Messaging System starts after Example messages in Array
@@ -282,14 +304,19 @@
 		}
 		if(tYLoop == true && msg.content.indexOf("Music finished! Disconnecting from voice channel!") === 0){
 			larypieBot.joinVoiceChannel(msg.author.voiceChannel);
-			if(tYSame == false){
-				if(songYouSelect + 2 > songYou.length){
-					songYouSelect = 0;
-				}else{
+			larypieBot.sendMessage(msg.channel, "+play " + function() {
+				if(tYSame == false){
 					songYouSelect+=2;
+					if(songYouSelect > songYou.length){
+						songYouSelect = 0;
+					}
 				}
-			}
-			larypieBot.sendMessage(msg.channel, "+play " + songYou[songYouSelect + 1]);
+				return songYou[songYouSelect + 1];
+				}	
+			);
+		}
+		if(msg.content.indexOf(">Come Here") === 0){
+			larypieBot.joinVoiceChannel(msg.author.voiceChannel);
 		}
 	//PlayList
 
