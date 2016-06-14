@@ -1,15 +1,15 @@
 // Program Details for program
-	var programDetails = [
-		"Larypie Bot",
-		"Version 6.8.2",
-		"Discord Js"
-	];
+	var programDetails = {
+		nameOfProgram: "Larypie Bot",
+		version: "6.8.5",
+		platform: "Discord Js"
+	};
 //Display the Prgram details
 	console.log("--------------------");
 	//Cycles though the indexes of the array for Program Detail
-	for (var i = 0; i < programDetails.length; i++) {
-		console.log(programDetails[i]);
-	};
+		console.log(programDetails.nameOfProgram);
+		console.log(programDetails.version);
+		console.log(programDetails.platform);
 	console.log("--------------------");
 //Varibles
 	//Messages
@@ -278,9 +278,10 @@
 			}
 			larypieBot.sendMessage(msg.channel, "+play " + songYou[songYouSelect + 1]);
 		}
-		//PlayList
+	//PlayList
+
 	});
 // Login
 	larypieBot.loginWithToken("MTg5OTI3NDMxNDMwMzQwNjA4.CjkUWg.9kAzFEGq-ZtGCDkYvyoY5Fhle2s");
 //Alert Console that JS file ran completely
-	console.log("Program: " + programDetails[0] + programDetails[1] + " JS file complete.");
+	console.log("Program: " + programDetails.nameOfProgram + " " + programDetails.version + " JS file complete.");
