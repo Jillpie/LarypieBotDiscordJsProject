@@ -1,0 +1,6 @@
+for i in {1..10}
+do
+	echo "Tell me meow"
+	read meow
+	echo "You said $meow"
+done

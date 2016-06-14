@@ -1,23 +1,25 @@
 {
   "name": "LarypieDiscordBot",
   "description": "A simple Larypie Discord Bot.",
-  "main": "./lethe.js",
+  "main": "./LarypieBot.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/meew0/Lethe.git"
   },
   "keywords": [
     "Larypie",
-    "discord"
+    "discord",
+    "bot"
   ],
   "author": "Larypie",
   "homepage": "https://github.com/Jillpie/LarypieBotDiscordJsProject",
   "dependencies": {
     "discord.js": "7.0.0",
-    "superagent": "^1.6.1",
-    "ytdl-core": "^0.7.9",
+    "git-rev": "^0.2.1",
+    "mongodb": "^2.1.18",
     "node-opus": "^0.1.11",
-    "git-rev": "^0.2.1"
+    "superagent": "^1.6.1",
+    "ytdl-core": "^0.7.9"
   },
-  "version": "3.0.0"
+  "version": "4.0.0"
 }
