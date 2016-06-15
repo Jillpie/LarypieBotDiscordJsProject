@@ -1,7 +1,7 @@
 // Program Details for program
 	var programDetails = {
 		nameOfProgram: "Larypie Bot",
-		version: "6.9.0",
+		version: "6.9.1",
 		platform: "Discord Js"
 	};
 //Display the Prgram details (better way to condense this?)
@@ -134,7 +134,7 @@
 			this.help = help;
 			this.call = call;
 			this.condition = condition;
-			this.commaction = commaction;
+			commaction();
 		};
 		//Commands
 		var commandPlay = new commandStruct(
@@ -161,8 +161,8 @@
 		];
 		//Commands Object Proto?
 			for(var i = 0; commandPile.length > i && i > 0; i++){
-				if(msg.content.toLowerCase().indexOf(">" + commandPile[i].call) === 0 ){
-					commandPile[i+1];
+				if(msg.content.toLowerCase().indexOf(">" + commandPile[i].call) === 0 && msg.author != larypieBot.user){
+					commandPile[i+1].commaction;
 				}
 			}
 		//Messageing Array Action
@@ -304,19 +304,23 @@
 		}
 		if(tYLoop == true && msg.content.indexOf("Music finished! Disconnecting from voice channel!") === 0){
 			larypieBot.joinVoiceChannel(msg.author.voiceChannel);
-			larypieBot.sendMessage(msg.channel, "+play " + function() {
-				if(tYSame == false){
-					songYouSelect+=2;
-					if(songYouSelect > songYou.length){
-						songYouSelect = 0;
-					}
+			if(tYSame == false){
+				songYouSelect+=2;
+				if(songYouSelect > songYou.length){
+					songYouSelect = 0;
 				}
-				return songYou[songYouSelect + 1];
-				}	
-			);
+			}
+			larypieBot.sendMessage(msg.channel, "+play " + songYou[songYouSelect + 1]);
 		}
 		if(msg.content.indexOf(">Come Here") === 0){
 			larypieBot.joinVoiceChannel(msg.author.voiceChannel);
+		}
+		if(msg.content.indexOf(">Bug") === 0){
+			larypieBot.sendMessage(msg.channel, "1");
+			larypieBot.sendMessage(msg.channel, "2");
+			larypieBot.sendMessage(msg.channel, "3");
+			larypieBot.sendMessage(msg.channel, "4");
+			larypieBot.sendMessage(msg.channel, "5");
 		}
 	//PlayList
 
